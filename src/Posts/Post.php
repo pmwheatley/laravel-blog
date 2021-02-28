@@ -22,7 +22,7 @@ class Post extends Model implements Feedable, HasMedia
     use PostPresenter;
 
     public $casts = [
-        'text' => '',
+        'text' => 'string',
         'published' => 'boolean',
         'original_content' => 'boolean',
     ];
@@ -91,7 +91,7 @@ class Post extends Model implements Feedable, HasMedia
     /**
      * @return array|\Spatie\Feed\FeedItem
      */
-    public function toFeedItem()
+    public function toFeedItem(): FeedItem
     {
         return FeedItem::create()
             ->id($this->id)
